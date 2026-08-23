@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap");
 
+
 /* =========================================================
    RESET
-   ========================================================= */
+========================================================= */
 
 * {
   box-sizing: border-box;
@@ -54,7 +55,7 @@ select {
 
 /* =========================================================
    GLOBAL SITE WIDTH
-   ========================================================= */
+========================================================= */
 
 .site {
   width: 100%;
@@ -73,7 +74,7 @@ main {
 
 /* =========================================================
    TOP NAVIGATION
-   ========================================================= */
+========================================================= */
 
 header {
   width: min(1120px, calc(100% - 64px));
@@ -95,7 +96,6 @@ header {
 
   font-size: 17px;
   font-weight: 700;
-
   letter-spacing: -0.04em;
 
   white-space: nowrap;
@@ -106,7 +106,6 @@ header nav {
   align-items: center;
 
   padding: 5px;
-
   gap: 2px;
 
   border: 1px solid #d3d2cb;
@@ -114,7 +113,8 @@ header nav {
 
   background: rgba(250, 249, 246, 0.94);
 
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.04);
 }
 
 header nav a {
@@ -123,7 +123,6 @@ header nav a {
   justify-content: center;
 
   height: 34px;
-
   padding: 0 16px;
 
   border-radius: 999px;
@@ -140,7 +139,8 @@ header nav a {
 
   transition:
     background 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 header nav a:hover {
@@ -148,7 +148,6 @@ header nav a:hover {
   background: #ecebe6;
 }
 
-/* Active-looking tabs */
 header nav a[href="/about"]:hover,
 header nav a[href="/projects"]:hover {
   background: #e8e7e1;
@@ -157,7 +156,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    COMMON
-   ========================================================= */
+========================================================= */
 
 .eyebrow {
   font-family:
@@ -179,8 +178,247 @@ header nav a[href="/projects"]:hover {
 
 
 /* =========================================================
+   SCROLL FOCUS SYSTEM
+========================================================= */
+
+.scroll-focus-root {
+  width: 100%;
+}
+
+
+/*
+   Base state:
+   content is slightly quieter while another section
+   is the current focus.
+*/
+
+.scroll-focus-section,
+.scroll-focus-experience {
+  position: relative;
+
+  transform-origin: center center;
+
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease,
+    filter 700ms ease;
+}
+
+
+/*
+   Elements begin slightly muted.
+*/
+
+.scroll-focus-section:not(.is-focused),
+.scroll-focus-experience:not(.is-focused) {
+  opacity: 0.68;
+}
+
+
+/*
+   Focused content becomes slightly larger and sharper.
+*/
+
+.scroll-focus-section.is-focused {
+  opacity: 1;
+
+  transform:
+    scale(1.018);
+
+  filter:
+    saturate(1.02);
+}
+
+
+/*
+   Experience entries get a smaller scale increase
+   so the timeline does not feel too exaggerated.
+*/
+
+.scroll-focus-experience.is-focused {
+  opacity: 1;
+
+  transform:
+    scale(1.025);
+
+  filter:
+    saturate(1.03);
+}
+
+
+/*
+   Content that has entered the viewport gets a
+   gentle reveal.
+*/
+
+.scroll-focus-section,
+.scroll-focus-experience {
+  opacity: 0;
+
+  animation:
+    scrollFocusReveal 800ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+.scroll-focus-section.is-visible,
+.scroll-focus-experience.is-visible {
+  opacity: 0.68;
+}
+
+.scroll-focus-section.is-focused,
+.scroll-focus-experience.is-focused {
+  opacity: 1;
+}
+
+@keyframes scrollFocusReveal {
+  from {
+    opacity: 0;
+    transform:
+      translateY(24px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/*
+   When focused, the title receives a subtle emphasis.
+*/
+
+.scroll-focus-section.is-focused
+.section-title {
+  transform: scale(1.025);
+  transform-origin: left center;
+}
+
+.scroll-focus-section
+.section-title {
+  transition:
+    transform 650ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/*
+   Focused experience company names become
+   slightly more prominent.
+*/
+
+.scroll-focus-experience.is-focused
+.experience-header h3 {
+  transform: scale(1.025);
+  transform-origin: left center;
+}
+
+.experience-header h3 {
+  transition:
+    transform 650ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/*
+   Focused company logo gently grows.
+*/
+
+.experience-logo {
+  transition:
+    transform 700ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+    filter 700ms ease;
+}
+
+.scroll-focus-experience.is-focused
+.experience-logo {
+  transform: scale(1.08);
+}
+
+
+/*
+   Focused timeline marker becomes more visible.
+*/
+
+.experience-marker {
+  transition:
+    transform 500ms ease,
+    background 500ms ease,
+    border-color 500ms ease;
+}
+
+.scroll-focus-experience.is-focused
+.experience-marker {
+  transform: scale(1.25);
+
+  background: #5147e8;
+
+  border-color: #5147e8;
+}
+
+
+/*
+   Active left navigation item.
+*/
+
+.about-section-nav a {
+  transition:
+    color 300ms ease,
+    opacity 300ms ease;
+}
+
+.about-section-nav a .nav-line {
+  transition:
+    width 350ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+    background 300ms ease;
+}
+
+.about-section-nav a.is-active {
+  color: #202020;
+
+  font-weight: 600;
+}
+
+.about-section-nav a.is-active .nav-line {
+  width: 32px;
+
+  background: #5147e8;
+}
+
+
+/*
+   Reduce motion for users who request it.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-focus-section,
+  .scroll-focus-experience,
+  .experience-logo,
+  .experience-marker,
+  .section-title,
+  .experience-header h3 {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+}
+
+
+/* =========================================================
    ABOUT PAGE
-   ========================================================= */
+========================================================= */
 
 .about-page {
   width: 100%;
@@ -189,7 +427,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    ABOUT INTRO
-   ========================================================= */
+========================================================= */
 
 .about-intro {
   width: 100%;
@@ -219,6 +457,7 @@ header nav a[href="/projects"]:hover {
   margin: 0 0 28px;
 
   font-size: 55px;
+
   line-height: 1.02;
 
   letter-spacing: -0.065em;
@@ -236,6 +475,7 @@ header nav a[href="/projects"]:hover {
   margin: 0 0 17px;
 
   font-size: 15px;
+
   line-height: 1.7;
 
   color: #68665f;
@@ -248,7 +488,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    ABOUT DETAILS
-   ========================================================= */
+========================================================= */
 
 .about-details {
   max-width: 850px;
@@ -256,6 +496,7 @@ header nav a[href="/projects"]:hover {
   margin-top: 34px;
 
   display: flex;
+
   flex-direction: column;
 
   gap: 9px;
@@ -264,7 +505,8 @@ header nav a[href="/projects"]:hover {
 .about-detail {
   display: grid;
 
-  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-columns:
+    88px minmax(0, 1fr);
 
   column-gap: 20px;
 
@@ -273,6 +515,7 @@ header nav a[href="/projects"]:hover {
 
 .about-detail strong {
   font-size: 12px;
+
   line-height: 1.65;
 
   font-weight: 700;
@@ -282,6 +525,7 @@ header nav a[href="/projects"]:hover {
 
 .about-detail span {
   font-size: 12px;
+
   line-height: 1.65;
 
   color: #68665f;
@@ -290,11 +534,13 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    CONTACT LINKS
-   ========================================================= */
+========================================================= */
 
 .about-links {
   display: flex;
+
   align-items: center;
+
   flex-wrap: wrap;
 
   gap: 9px;
@@ -304,6 +550,7 @@ header nav a[href="/projects"]:hover {
 
 .about-link {
   display: inline-flex;
+
   align-items: center;
 
   gap: 7px;
@@ -350,14 +597,15 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    EXPERIENCE LAYOUT
-   ========================================================= */
+========================================================= */
 
 .about-experience-layout {
   width: 100%;
 
   display: grid;
 
-  grid-template-columns: 175px minmax(0, 1fr);
+  grid-template-columns:
+    175px minmax(0, 1fr);
 
   column-gap: 68px;
 
@@ -369,7 +617,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    LEFT EXPERIENCE NAV
-   ========================================================= */
+========================================================= */
 
 .about-experience-sidebar {
   position: sticky;
@@ -381,6 +629,7 @@ header nav a[href="/projects"]:hover {
 
 .about-section-nav {
   display: flex;
+
   flex-direction: column;
 
   gap: 25px;
@@ -390,6 +639,7 @@ header nav a[href="/projects"]:hover {
 
 .about-section-nav a {
   display: flex;
+
   align-items: center;
 
   gap: 10px;
@@ -398,7 +648,8 @@ header nav a[href="/projects"]:hover {
 
   color: #6d6b65;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease;
 }
 
 .about-section-nav a:hover {
@@ -407,6 +658,7 @@ header nav a[href="/projects"]:hover {
 
 .nav-line {
   width: 18px;
+
   height: 1px;
 
   flex-shrink: 0;
@@ -427,17 +679,18 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    CENTER CONTENT
-   ========================================================= */
+========================================================= */
 
 .about-experience-content {
   width: 100%;
+
   min-width: 0;
 }
 
 
 /* =========================================================
    INTRODUCTION
-   ========================================================= */
+========================================================= */
 
 .experience-introduction {
   padding: 0 0 70px;
@@ -451,6 +704,7 @@ header nav a[href="/projects"]:hover {
   margin: 17px 0 0;
 
   font-size: 43px;
+
   line-height: 1.06;
 
   letter-spacing: -0.055em;
@@ -461,7 +715,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    PROFESSIONAL EXPERIENCE
-   ========================================================= */
+========================================================= */
 
 .experience-section {
   padding-top: 72px;
@@ -471,11 +725,13 @@ header nav a[href="/projects"]:hover {
   margin: 0 0 48px;
 }
 
-.experience-heading h2 {
+.experience-heading h2,
+.section-title {
   margin: 0;
 
-  font-size: 38px;
-  line-height: 1;
+  font-size: 32px;
+
+  line-height: 1.08;
 
   letter-spacing: -0.055em;
 
@@ -485,7 +741,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    EXPERIENCE TIMELINE
-   ========================================================= */
+========================================================= */
 
 .experience-timeline {
   position: relative;
@@ -503,7 +759,9 @@ header nav a[href="/projects"]:hover {
   position: absolute;
 
   left: 0;
+
   top: 7px;
+
   bottom: 0;
 
   width: 1px;
@@ -514,12 +772,16 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    EXPERIENCE ITEM
-   ========================================================= */
+========================================================= */
 
 .experience-item {
   position: relative;
 
   padding-bottom: 72px;
+
+  will-change:
+    transform,
+    opacity;
 }
 
 .experience-item:last-child {
@@ -529,15 +791,17 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    TIMELINE DOT
-   ========================================================= */
+========================================================= */
 
 .experience-marker {
   position: absolute;
 
   left: -53px;
+
   top: 6px;
 
   width: 15px;
+
   height: 15px;
 
   border-radius: 50%;
@@ -546,28 +810,36 @@ header nav a[href="/projects"]:hover {
 
   border: 2px solid #242424;
 
-  box-shadow: 0 0 0 4px #f7f6f2;
+  box-shadow:
+    0 0 0 4px #f7f6f2;
 }
 
 
 /* =========================================================
    EXPERIENCE HEADER
-   ========================================================= */
+========================================================= */
 
 .experience-header {
   width: 100%;
 
   display: flex;
+
   align-items: flex-start;
+
   justify-content: space-between;
 
   gap: 30px;
+}
+
+.experience-company-info {
+  min-width: 0;
 }
 
 .experience-header h3 {
   margin: 0;
 
   font-size: 22px;
+
   line-height: 1.25;
 
   letter-spacing: -0.035em;
@@ -579,6 +851,7 @@ header nav a[href="/projects"]:hover {
   margin-top: 6px;
 
   font-size: 13px;
+
   line-height: 1.5;
 
   font-weight: 600;
@@ -605,12 +878,13 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    EXPERIENCE LOGO
-   ========================================================= */
+========================================================= */
 
 .experience-logo-wrap {
   width: 100%;
 
   display: flex;
+
   align-items: center;
 
   margin: 26px 0 25px;
@@ -620,9 +894,11 @@ header nav a[href="/projects"]:hover {
 
 .experience-logo {
   width: 155px;
+
   height: 62px;
 
   object-fit: contain;
+
   object-position: left center;
 }
 
@@ -633,7 +909,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    EXPERIENCE BULLETS
-   ========================================================= */
+========================================================= */
 
 .experience-body {
   width: 100%;
@@ -653,6 +929,7 @@ header nav a[href="/projects"]:hover {
   padding-left: 9px;
 
   font-size: 13px;
+
   line-height: 1.78;
 
   color: #68665f;
@@ -669,7 +946,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    EDUCATION
-   ========================================================= */
+========================================================= */
 
 .about-lower-section {
   margin-top: 70px;
@@ -679,27 +956,49 @@ header nav a[href="/projects"]:hover {
   border-top: 1px solid #d8d7d1;
 }
 
-.about-lower-section > .eyebrow {
-  margin-bottom: 24px;
+.education-entry {
+  margin-top: 30px;
+}
+
+.education-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 30px;
 }
 
 .education-entry h3 {
+  max-width: 650px;
+
   margin: 0;
 
   font-size: 21px;
+
   line-height: 1.3;
+
+  letter-spacing: -0.03em;
+
+  font-weight: 600;
 }
 
 .education-entry p {
   margin: 8px 0 4px;
 
   font-size: 13px;
+
   line-height: 1.6;
 
   color: #68665f;
 }
 
-.education-entry span {
+.education-date {
+  flex-shrink: 0;
+
+  padding-top: 4px;
+
   font-family:
     "DM Mono",
     monospace;
@@ -707,12 +1006,22 @@ header nav a[href="/projects"]:hover {
   font-size: 10px;
 
   color: #77756e;
+
+  white-space: nowrap;
+}
+
+.education-location {
+  margin-top: 8px;
+
+  font-size: 12px;
+
+  color: #77756e;
 }
 
 
 /* =========================================================
-   SKILLS
-   ========================================================= */
+   TECHNICAL SKILLS
+========================================================= */
 
 .skills-grid {
   display: grid;
@@ -761,8 +1070,8 @@ header nav a[href="/projects"]:hover {
 
 
 /* =========================================================
-   HOME
-   ========================================================= */
+   HOME / LEGACY STYLES
+========================================================= */
 
 .hero {
   min-height: 510px;
@@ -792,6 +1101,7 @@ header nav a[href="/projects"]:hover {
   margin: 0;
 
   font-size: 55px;
+
   line-height: 1;
 
   letter-spacing: -0.065em;
@@ -821,6 +1131,7 @@ header nav a[href="/projects"]:hover {
 
 .location {
   display: flex;
+
   align-items: center;
 
   gap: 7px;
@@ -832,6 +1143,7 @@ header nav a[href="/projects"]:hover {
 
 .hero-side .mono {
   font-size: 10px;
+
   line-height: 1.7;
 
   color: #77756e;
@@ -840,10 +1152,11 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    GENERAL PILLS
-   ========================================================= */
+========================================================= */
 
 .links {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 9px;
@@ -851,6 +1164,7 @@ header nav a[href="/projects"]:hover {
 
 .pill {
   display: inline-flex;
+
   align-items: center;
 
   gap: 7px;
@@ -860,6 +1174,7 @@ header nav a[href="/projects"]:hover {
   padding: 0 13px;
 
   border: 1px solid #cfcec7;
+
   border-radius: 4px;
 
   font-family:
@@ -887,7 +1202,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    SECTIONS
-   ========================================================= */
+========================================================= */
 
 .section {
   padding: 72px 0;
@@ -897,7 +1212,9 @@ header nav a[href="/projects"]:hover {
 
 .section-head {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   margin-bottom: 32px;
@@ -924,7 +1241,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    PROJECTS
-   ========================================================= */
+========================================================= */
 
 .projects {
   display: grid;
@@ -945,7 +1262,9 @@ header nav a[href="/projects"]:hover {
   background: #faf9f6;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: space-between;
 
   transition:
@@ -991,6 +1310,7 @@ header nav a[href="/projects"]:hover {
 
 .tags {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 6px;
@@ -1015,17 +1335,19 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    HOME EXPERIENCE PREVIEW
-   ========================================================= */
+========================================================= */
 
 .exp {
   display: flex;
+
   flex-direction: column;
 }
 
 .exp-item {
   display: grid;
 
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns:
+    180px minmax(0, 1fr);
 
   gap: 35px;
 
@@ -1074,6 +1396,7 @@ header nav a[href="/projects"]:hover {
   margin-bottom: 8px;
 
   font-size: 12px;
+
   line-height: 1.65;
 
   color: #68665f;
@@ -1082,7 +1405,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    CTA
-   ========================================================= */
+========================================================= */
 
 .cta {
   padding: 90px 0;
@@ -1113,7 +1436,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    RESEARCH
-   ========================================================= */
+========================================================= */
 
 .research-page {
   padding: 70px 0 100px;
@@ -1121,7 +1444,9 @@ header nav a[href="/projects"]:hover {
 
 .research-header {
   display: flex;
+
   align-items: baseline;
+
   justify-content: space-between;
 
   padding-bottom: 40px;
@@ -1149,6 +1474,7 @@ header nav a[href="/projects"]:hover {
 
 .research-list {
   display: flex;
+
   flex-direction: column;
 }
 
@@ -1195,7 +1521,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    CERTIFICATIONS
-   ========================================================= */
+========================================================= */
 
 .certifications-page {
   padding: 70px 0 100px;
@@ -1203,7 +1529,9 @@ header nav a[href="/projects"]:hover {
 
 .certifications-header {
   display: flex;
+
   align-items: baseline;
+
   justify-content: space-between;
 
   padding-bottom: 40px;
@@ -1240,7 +1568,9 @@ header nav a[href="/projects"]:hover {
   background: #faf9f6;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: space-between;
 
   transition:
@@ -1287,7 +1617,7 @@ header nav a[href="/projects"]:hover {
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer {
   width: min(1120px, calc(100% - 64px));
@@ -1299,7 +1629,9 @@ footer {
   border-top: 1px solid #d8d7d1;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   color: #77756e;
@@ -1309,6 +1641,7 @@ footer {
 
 .footer-links {
   display: flex;
+
   align-items: center;
 
   gap: 20px;
@@ -1316,6 +1649,7 @@ footer {
 
 .footer-links a {
   display: inline-flex;
+
   align-items: center;
 
   gap: 6px;
@@ -1329,15 +1663,20 @@ footer {
 
 
 /* =========================================================
-   RESPONSIVE
-   ========================================================= */
+   TABLET
+========================================================= */
 
 @media (max-width: 900px) {
 
   .site > main,
   header {
-    width: min(100% - 44px, 760px);
+    width:
+      min(
+        calc(100% - 44px),
+        760px
+      );
   }
+
 
   .hero {
     grid-template-columns: 1fr;
@@ -1345,40 +1684,55 @@ footer {
     min-height: auto;
   }
 
+
   .hero-side {
     align-self: start;
   }
 
+
   .about-experience-layout {
-    grid-template-columns: 150px minmax(0, 1fr);
+    grid-template-columns:
+      150px minmax(0, 1fr);
 
     column-gap: 40px;
   }
+
 
   .about-intro h1 {
     font-size: 47px;
   }
 
+
   .experience-introduction h2 {
     font-size: 37px;
   }
 
+
+  .experience-heading h2,
+  .section-title {
+    font-size: 32px;
+  }
+
+
   .projects {
     grid-template-columns: 1fr;
   }
+
 }
 
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
   .site > main,
   header {
-    width: calc(100% - 32px);
+    width:
+      calc(100% - 32px);
   }
+
 
   header {
     height: auto;
@@ -1390,9 +1744,11 @@ footer {
     gap: 16px;
   }
 
+
   .brand {
     font-size: 15px;
   }
+
 
   header nav {
     max-width: 60%;
@@ -1402,6 +1758,7 @@ footer {
     justify-content: flex-end;
   }
 
+
   header nav a {
     height: 30px;
 
@@ -1410,23 +1767,28 @@ footer {
     font-size: 8px;
   }
 
+
   .about-intro {
     padding: 52px 0 50px;
   }
+
 
   .about-intro h1 {
     font-size: 40px;
   }
 
+
   .about-intro-text p {
     font-size: 14px;
   }
+
 
   .about-experience-layout {
     display: block;
 
     padding: 55px 0 80px;
   }
+
 
   .about-experience-sidebar {
     position: relative;
@@ -1436,6 +1798,7 @@ footer {
     margin-bottom: 50px;
   }
 
+
   .about-section-nav {
     flex-direction: row;
 
@@ -1444,17 +1807,22 @@ footer {
     gap: 16px 22px;
   }
 
+
   .experience-introduction {
     padding-bottom: 55px;
   }
+
 
   .experience-introduction h2 {
     font-size: 34px;
   }
 
-  .experience-heading h2 {
+
+  .experience-heading h2,
+  .section-title {
     font-size: 30px;
   }
+
 
   .experience-header {
     flex-direction: column;
@@ -1462,25 +1830,31 @@ footer {
     gap: 7px;
   }
 
+
   .experience-date {
     padding-top: 0;
   }
 
+
   .experience-logo {
     width: 135px;
+
     height: 55px;
   }
+
 
   .skills-grid,
   .certifications-grid {
     grid-template-columns: 1fr;
   }
 
+
   .exp-item {
     grid-template-columns: 1fr;
 
     gap: 8px;
   }
+
 
   .research-header,
   .certifications-header {
@@ -1490,64 +1864,11 @@ footer {
 
     gap: 10px;
   }
-}
 
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-  .about-intro h1 {
-    font-size: 35px;
-  }
-
-  .about-detail {
-    grid-template-columns: 75px minmax(0, 1fr);
-
-    column-gap: 12px;
-  }
-
-  .about-links {
-    gap: 7px;
-  }
-
-  .about-link {
-    padding: 0 10px;
-
-    font-size: 9px;
-  }
-
-  .experience-introduction h2 {
-    font-size: 29px;
-  }
-
-  .experience-heading h2 {
-    font-size: 27px;
-  }
-
-  .experience-timeline {
-    padding-left: 30px;
-
-    margin-left: 8px;
-  }
-
-  .experience-marker {
-    left: -37px;
-  }
-
-  .experience-logo {
-    width: 120px;
-    height: 50px;
-  }
-
-  .cta h2 {
-    font-size: 34px;
-  }
 
   footer {
-    width: calc(100% - 32px);
+    width:
+      calc(100% - 32px);
 
     align-items: flex-start;
 
@@ -1555,4 +1876,99 @@ footer {
 
     gap: 15px;
   }
+
+
+  /*
+     Reduce the scale slightly on mobile so
+     focused sections don't cause horizontal movement.
+  */
+
+  .scroll-focus-section.is-focused {
+    transform: scale(1.008);
+  }
+
+  .scroll-focus-experience.is-focused {
+    transform: scale(1.012);
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .about-intro h1 {
+    font-size: 35px;
+  }
+
+
+  .about-detail {
+    grid-template-columns:
+      75px minmax(0, 1fr);
+
+    column-gap: 12px;
+  }
+
+
+  .about-links {
+    gap: 7px;
+  }
+
+
+  .about-link {
+    padding: 0 10px;
+
+    font-size: 9px;
+  }
+
+
+  .experience-introduction h2 {
+    font-size: 29px;
+  }
+
+
+  .experience-heading h2,
+  .section-title {
+    font-size: 27px;
+  }
+
+
+  .experience-timeline {
+    padding-left: 30px;
+
+    margin-left: 8px;
+  }
+
+
+  .experience-marker {
+    left: -37px;
+  }
+
+
+  .experience-logo {
+    width: 120px;
+
+    height: 50px;
+  }
+
+
+  .cta h2 {
+    font-size: 34px;
+  }
+
+
+  footer {
+    width:
+      calc(100% - 32px);
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
 }
