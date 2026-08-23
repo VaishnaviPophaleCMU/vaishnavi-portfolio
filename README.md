@@ -1,6 +1,5 @@
-# Vaishnavi Sunil Pophale Portfolio
+# Vaishnavi Pophale's Portfolio
 
-A clean, editorial portfolio inspired by the structure of https://anuj-m-gupta.vercel.app, with Home, About, Projects, Experience, Research, LinkedIn, email, and resume links populated from Vaishnavi Sunil Pophale's resume.
 
 ## Run locally
 
