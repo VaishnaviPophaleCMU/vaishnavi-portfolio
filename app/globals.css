@@ -1,0 +1,1558 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap");
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f7f6f2;
+  color: #202020;
+
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* =========================================================
+   GLOBAL SITE WIDTH
+   ========================================================= */
+
+.site {
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+}
+
+.site > main {
+  width: min(1120px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+   ========================================================= */
+
+header {
+  width: min(1120px, calc(100% - 64px));
+  height: 82px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  z-index: 100;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+
+  white-space: nowrap;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+
+  padding: 5px;
+
+  gap: 2px;
+
+  border: 1px solid #d3d2cb;
+  border-radius: 999px;
+
+  background: rgba(250, 249, 246, 0.94);
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+header nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 34px;
+
+  padding: 0 16px;
+
+  border-radius: 999px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #65635d;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+header nav a:hover {
+  color: #202020;
+  background: #ecebe6;
+}
+
+/* Active-looking tabs */
+header nav a[href="/about"]:hover,
+header nav a[href="/projects"]:hover {
+  background: #e8e7e1;
+}
+
+
+/* =========================================================
+   COMMON
+   ========================================================= */
+
+.eyebrow {
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.16em;
+
+  color: #77756e;
+}
+
+.mono {
+  font-family:
+    "DM Mono",
+    monospace;
+}
+
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+.about-page {
+  width: 100%;
+}
+
+
+/* =========================================================
+   ABOUT INTRO
+   ========================================================= */
+
+.about-intro {
+  width: 100%;
+
+  padding: 72px 0 55px;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.about-intro-label {
+  margin-bottom: 25px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.16em;
+
+  color: #77756e;
+}
+
+.about-intro h1 {
+  max-width: 720px;
+
+  margin: 0 0 28px;
+
+  font-size: 55px;
+  line-height: 1.02;
+
+  letter-spacing: -0.065em;
+
+  font-weight: 700;
+}
+
+.about-intro-text {
+  max-width: 920px;
+}
+
+.about-intro-text p {
+  max-width: 880px;
+
+  margin: 0 0 17px;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #68665f;
+}
+
+.about-intro-text p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   ABOUT DETAILS
+   ========================================================= */
+
+.about-details {
+  max-width: 850px;
+
+  margin-top: 34px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.about-detail {
+  display: grid;
+
+  grid-template-columns: 88px minmax(0, 1fr);
+
+  column-gap: 20px;
+
+  align-items: start;
+}
+
+.about-detail strong {
+  font-size: 12px;
+  line-height: 1.65;
+
+  font-weight: 700;
+
+  color: #242424;
+}
+
+.about-detail span {
+  font-size: 12px;
+  line-height: 1.65;
+
+  color: #68665f;
+}
+
+
+/* =========================================================
+   CONTACT LINKS
+   ========================================================= */
+
+.about-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 30px;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  height: 35px;
+
+  padding: 0 13px;
+
+  border: 1px solid #cfcec7;
+
+  border-radius: 4px;
+
+  background: #faf9f6;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #57554f;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-link:hover {
+  border-color: #242424;
+
+  color: #202020;
+
+  background: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.about-link svg {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   EXPERIENCE LAYOUT
+   ========================================================= */
+
+.about-experience-layout {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 175px minmax(0, 1fr);
+
+  column-gap: 68px;
+
+  align-items: start;
+
+  padding: 76px 0 110px;
+}
+
+
+/* =========================================================
+   LEFT EXPERIENCE NAV
+   ========================================================= */
+
+.about-experience-sidebar {
+  position: sticky;
+
+  top: 28px;
+
+  align-self: start;
+}
+
+.about-section-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 25px;
+
+  padding-top: 8px;
+}
+
+.about-section-nav a {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 13px;
+
+  color: #6d6b65;
+
+  transition: color 0.2s ease;
+}
+
+.about-section-nav a:hover {
+  color: #202020;
+}
+
+.nav-line {
+  width: 18px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: #c9c8c1;
+
+  transition:
+    width 0.2s ease,
+    background 0.2s ease;
+}
+
+.about-section-nav a:hover .nav-line {
+  width: 27px;
+
+  background: #202020;
+}
+
+
+/* =========================================================
+   CENTER CONTENT
+   ========================================================= */
+
+.about-experience-content {
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
+
+.experience-introduction {
+  padding: 0 0 70px;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.experience-introduction h2 {
+  max-width: 780px;
+
+  margin: 17px 0 0;
+
+  font-size: 43px;
+  line-height: 1.06;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PROFESSIONAL EXPERIENCE
+   ========================================================= */
+
+.experience-section {
+  padding-top: 72px;
+}
+
+.experience-heading {
+  margin: 0 0 48px;
+}
+
+.experience-heading h2 {
+  margin: 0;
+
+  font-size: 38px;
+  line-height: 1;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   EXPERIENCE TIMELINE
+   ========================================================= */
+
+.experience-timeline {
+  position: relative;
+
+  width: 100%;
+
+  padding-left: 46px;
+
+  margin-left: 4px;
+}
+
+.experience-timeline::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 7px;
+  bottom: 0;
+
+  width: 1px;
+
+  background: #c8c7c0;
+}
+
+
+/* =========================================================
+   EXPERIENCE ITEM
+   ========================================================= */
+
+.experience-item {
+  position: relative;
+
+  padding-bottom: 72px;
+}
+
+.experience-item:last-child {
+  padding-bottom: 10px;
+}
+
+
+/* =========================================================
+   TIMELINE DOT
+   ========================================================= */
+
+.experience-marker {
+  position: absolute;
+
+  left: -53px;
+  top: 6px;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  background: #f7f6f2;
+
+  border: 2px solid #242424;
+
+  box-shadow: 0 0 0 4px #f7f6f2;
+}
+
+
+/* =========================================================
+   EXPERIENCE HEADER
+   ========================================================= */
+
+.experience-header {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.experience-header h3 {
+  margin: 0;
+
+  font-size: 22px;
+  line-height: 1.25;
+
+  letter-spacing: -0.035em;
+
+  font-weight: 700;
+}
+
+.experience-role {
+  margin-top: 6px;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  font-weight: 600;
+
+  color: #5147e8;
+}
+
+.experience-date {
+  flex-shrink: 0;
+
+  padding-top: 4px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   EXPERIENCE LOGO
+   ========================================================= */
+
+.experience-logo-wrap {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  margin: 26px 0 25px;
+
+  min-height: 58px;
+}
+
+.experience-logo {
+  width: 155px;
+  height: 62px;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+.experience-logo-dark {
+  background: transparent;
+}
+
+
+/* =========================================================
+   EXPERIENCE BULLETS
+   ========================================================= */
+
+.experience-body {
+  width: 100%;
+
+  max-width: 780px;
+}
+
+.experience-body ul {
+  margin: 0;
+
+  padding-left: 20px;
+}
+
+.experience-body li {
+  margin: 0 0 22px;
+
+  padding-left: 9px;
+
+  font-size: 13px;
+  line-height: 1.78;
+
+  color: #68665f;
+}
+
+.experience-body li:last-child {
+  margin-bottom: 0;
+}
+
+.experience-body li::marker {
+  color: #5147e8;
+}
+
+
+/* =========================================================
+   EDUCATION
+   ========================================================= */
+
+.about-lower-section {
+  margin-top: 70px;
+
+  padding-top: 60px;
+
+  border-top: 1px solid #d8d7d1;
+}
+
+.about-lower-section > .eyebrow {
+  margin-bottom: 24px;
+}
+
+.education-entry h3 {
+  margin: 0;
+
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.education-entry p {
+  margin: 8px 0 4px;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: #68665f;
+}
+
+.education-entry span {
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+}
+
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
+.skills-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-top: 28px;
+}
+
+.skill-group {
+  min-height: 125px;
+
+  padding: 22px;
+
+  border: 1px solid #d8d7d1;
+
+  background: #faf9f6;
+}
+
+.skill-group span {
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #77756e;
+}
+
+.skill-group p {
+  margin: 13px 0 0;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: #68665f;
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+.hero {
+  min-height: 510px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    250px;
+
+  gap: 55px;
+
+  align-items: center;
+
+  padding: 65px 0;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.hero .eyebrow {
+  margin-bottom: 19px;
+}
+
+.hero h1 {
+  max-width: 750px;
+
+  margin: 0;
+
+  font-size: 55px;
+  line-height: 1;
+
+  letter-spacing: -0.065em;
+}
+
+.hero h1 span {
+  color: #5147e8;
+}
+
+.hero p {
+  max-width: 700px;
+
+  margin: 27px 0 0;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  color: #68665f;
+}
+
+.hero-side {
+  align-self: end;
+
+  padding-bottom: 12px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 14px;
+
+  font-size: 12px;
+}
+
+.hero-side .mono {
+  font-size: 10px;
+  line-height: 1.7;
+
+  color: #77756e;
+}
+
+
+/* =========================================================
+   GENERAL PILLS
+   ========================================================= */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  min-height: 35px;
+
+  padding: 0 13px;
+
+  border: 1px solid #cfcec7;
+  border-radius: 4px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #57554f;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.pill:hover {
+  border-color: #242424;
+
+  color: #202020;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.section {
+  padding: 72px 0;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 32px;
+}
+
+.section-head h2 {
+  margin: 0;
+
+  font-size: 30px;
+
+  letter-spacing: -0.045em;
+}
+
+.section-head a {
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+}
+
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.projects {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.project {
+  min-height: 270px;
+
+  padding: 25px;
+
+  border: 1px solid #d8d7d1;
+
+  background: #faf9f6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.project:hover {
+  transform: translateY(-3px);
+
+  border-color: #aaa8a1;
+}
+
+.project-number {
+  margin-bottom: 42px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+}
+
+.project h3 {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+
+  letter-spacing: -0.03em;
+}
+
+.project p {
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+
+  color: #68665f;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 22px;
+}
+
+.tag {
+  padding: 6px 8px;
+
+  border: 1px solid #d8d7d1;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+
+  color: #77756e;
+}
+
+
+/* =========================================================
+   HOME EXPERIENCE PREVIEW
+   ========================================================= */
+
+.exp {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-item {
+  display: grid;
+
+  grid-template-columns: 180px minmax(0, 1fr);
+
+  gap: 35px;
+
+  padding: 28px 0;
+
+  border-top: 1px solid #d8d7d1;
+}
+
+.exp-item:first-child {
+  border-top: 0;
+}
+
+.company {
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.date {
+  margin-top: 7px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+}
+
+.exp-role {
+  margin-bottom: 12px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.exp-item ul {
+  margin: 0;
+
+  padding-left: 18px;
+}
+
+.exp-item li {
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  line-height: 1.65;
+
+  color: #68665f;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta {
+  padding: 90px 0;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.cta h2 {
+  margin: 15px 0;
+
+  font-size: 42px;
+
+  letter-spacing: -0.055em;
+}
+
+.cta p {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: #68665f;
+}
+
+
+/* =========================================================
+   RESEARCH
+   ========================================================= */
+
+.research-page {
+  padding: 70px 0 100px;
+}
+
+.research-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  padding-bottom: 40px;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.research-header h1 {
+  margin: 0;
+
+  font-size: 52px;
+
+  letter-spacing: -0.06em;
+}
+
+.research-count {
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+}
+
+.research-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.research-item {
+  padding: 27px 0;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.research-item a {
+  display: block;
+
+  font-size: 15px;
+
+  line-height: 1.55;
+}
+
+.research-item a:hover {
+  color: #5147e8;
+}
+
+.research-meta {
+  margin-top: 7px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #77756e;
+}
+
+.research-award {
+  margin-top: 7px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #5147e8;
+}
+
+
+/* =========================================================
+   CERTIFICATIONS
+   ========================================================= */
+
+.certifications-page {
+  padding: 70px 0 100px;
+}
+
+.certifications-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  padding-bottom: 40px;
+
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.certifications-header h1 {
+  margin: 0;
+
+  font-size: 52px;
+
+  letter-spacing: -0.06em;
+}
+
+.certifications-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  padding-top: 30px;
+}
+
+.certification-card {
+  min-height: 190px;
+
+  padding: 25px;
+
+  border: 1px solid #d8d7d1;
+
+  background: #faf9f6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.certification-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #aaa8a1;
+}
+
+.certification-card h3 {
+  margin: 0;
+
+  font-size: 18px;
+
+  letter-spacing: -0.03em;
+}
+
+.certification-card p {
+  margin: 9px 0 0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color: #68665f;
+}
+
+.certification-card a {
+  margin-top: 20px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 10px;
+
+  color: #5147e8;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  width: min(1120px, calc(100% - 64px));
+
+  margin: 0 auto;
+
+  padding: 28px 0 35px;
+
+  border-top: 1px solid #d8d7d1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #77756e;
+
+  font-size: 11px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #68665f;
+}
+
+.footer-links a:hover {
+  color: #202020;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .site > main,
+  header {
+    width: min(100% - 44px, 760px);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+  .hero-side {
+    align-self: start;
+  }
+
+  .about-experience-layout {
+    grid-template-columns: 150px minmax(0, 1fr);
+
+    column-gap: 40px;
+  }
+
+  .about-intro h1 {
+    font-size: 47px;
+  }
+
+  .experience-introduction h2 {
+    font-size: 37px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .site > main,
+  header {
+    width: calc(100% - 32px);
+  }
+
+  header {
+    height: auto;
+
+    min-height: 76px;
+
+    padding: 18px 0;
+
+    gap: 16px;
+  }
+
+  .brand {
+    font-size: 15px;
+  }
+
+  header nav {
+    max-width: 60%;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+  }
+
+  header nav a {
+    height: 30px;
+
+    padding: 0 9px;
+
+    font-size: 8px;
+  }
+
+  .about-intro {
+    padding: 52px 0 50px;
+  }
+
+  .about-intro h1 {
+    font-size: 40px;
+  }
+
+  .about-intro-text p {
+    font-size: 14px;
+  }
+
+  .about-experience-layout {
+    display: block;
+
+    padding: 55px 0 80px;
+  }
+
+  .about-experience-sidebar {
+    position: relative;
+
+    top: auto;
+
+    margin-bottom: 50px;
+  }
+
+  .about-section-nav {
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    gap: 16px 22px;
+  }
+
+  .experience-introduction {
+    padding-bottom: 55px;
+  }
+
+  .experience-introduction h2 {
+    font-size: 34px;
+  }
+
+  .experience-heading h2 {
+    font-size: 30px;
+  }
+
+  .experience-header {
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+  .experience-date {
+    padding-top: 0;
+  }
+
+  .experience-logo {
+    width: 135px;
+    height: 55px;
+  }
+
+  .skills-grid,
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-item {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+  }
+
+  .research-header,
+  .certifications-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .about-intro h1 {
+    font-size: 35px;
+  }
+
+  .about-detail {
+    grid-template-columns: 75px minmax(0, 1fr);
+
+    column-gap: 12px;
+  }
+
+  .about-links {
+    gap: 7px;
+  }
+
+  .about-link {
+    padding: 0 10px;
+
+    font-size: 9px;
+  }
+
+  .experience-introduction h2 {
+    font-size: 29px;
+  }
+
+  .experience-heading h2 {
+    font-size: 27px;
+  }
+
+  .experience-timeline {
+    padding-left: 30px;
+
+    margin-left: 8px;
+  }
+
+  .experience-marker {
+    left: -37px;
+  }
+
+  .experience-logo {
+    width: 120px;
+    height: 50px;
+  }
+
+  .cta h2 {
+    font-size: 34px;
+  }
+
+  footer {
+    width: calc(100% - 32px);
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+}
