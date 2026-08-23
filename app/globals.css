@@ -245,6 +245,30 @@ header nav a[href="/projects"]:hover {
     saturate(1.03);
 }
 
+.credential {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #77756e;
+  }
+  
+  .credential span,
+  .credential code {
+    font-family: "Inter", sans-serif;
+    font-size: inherit;
+    font-weight: 400;
+  }
+  
+  .credential code {
+    color: inherit;
+    background: none;
+    padding: 0;
+    border: 0;
+  }
 
 /*
    Content that has entered the viewport gets a

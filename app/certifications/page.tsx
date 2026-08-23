@@ -52,11 +52,11 @@ export default function Certifications() {
                 <h2>{cert.title}</h2>
 
                 {cert.credentialId && (
-                  <div className="credential">
-                    <span>Credential ID</span>
-                    <code>{cert.credentialId}</code>
-                  </div>
-                )}
+  <div className="credential">
+    <span>Credential ID: </span>
+    <code>{cert.credentialId}</code>
+  </div>
+)}
               </div>
 
               <div className="certification-footer">
@@ -72,7 +72,7 @@ export default function Certifications() {
                   </a>
                 ) : (
                   <span className="certification-unavailable">
-                    Credential link unavailable
+                   
                   </span>
                 )}
               </div>
